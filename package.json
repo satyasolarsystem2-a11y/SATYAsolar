@@ -1,0 +1,15 @@
+{
+  "name": "rbsc-solar-crm",
+  "version": "2.0.0",
+  "description": "RBSC Solar CRM — fully powered by Supabase",
+  "scripts": {
+    "dev": "npm start --prefix frontend",
+    "build": "npm run build --prefix frontend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.108.1"
+  }
+}

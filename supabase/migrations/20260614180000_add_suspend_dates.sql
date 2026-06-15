@@ -1,0 +1,1 @@
+ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS suspended_from TIMESTAMPTZ, ADD COLUMN IF NOT EXISTS suspended_until TIMESTAMPTZ;
