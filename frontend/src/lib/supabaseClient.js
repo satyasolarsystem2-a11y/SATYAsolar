@@ -4,9 +4,21 @@ import { createClient } from "@supabase/supabase-js";
 
 // Read keys directly from .env (Anon key is designed to be public and secured by RLS)
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
-const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
+const supabaseAnonKey =
+  process.env.REACT_APP_SUPABASE_ANON_KEY ||
+  process.env.REACT_APP_SUPABASE_PUBLISHABLE_KEY;
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.error(
+    "[Supabase] Missing env vars: REACT_APP_SUPABASE_URL or REACT_APP_SUPABASE_PUBLISHABLE_KEY. " +
+    "Make sure your .env file is set up correctly and the dev server is restarted."
+  );
+}
+
+export const supabase = createClient(
+  supabaseUrl || "https://placeholder.supabase.co",
+  supabaseAnonKey || "placeholder-key"
+);
 
 
 // ─── Edge Function base URLs ──────────────────────────────────────────────────
